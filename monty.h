@@ -62,6 +62,14 @@ arg Arg;
 
 /* Prototypes */
 
+void pushOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
+void pallOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
+void popOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
+void swapOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
+char *opGlobal[] = { NULL, NULL, "stack", NULL }
+int main(int argc, char **argv)
+void opcode_check(int line_number, stack_t **stack)
+
 /* END */
 
 
