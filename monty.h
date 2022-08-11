@@ -45,6 +45,17 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+
+/**
+* struct arg - global variable to hold the value of the argument to the opcode
+* @argument: char variable.
+*/
+
+typedef struct arg
+{
+    char *argument;
+}arg;
+arg Arg;
 /* END */
 
 
