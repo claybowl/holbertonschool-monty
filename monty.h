@@ -65,27 +65,20 @@ arg Arg;
 
 /* Prototypes */
 
-<<<<<<< HEAD
 void pushOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd);
 void pallOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd);
 void popOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd);
 void swapOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd);
 char *opGlobal[] = { NULL, NULL, "stack", NULL };
 void opcode_check(int line_number, stack_t **stack);
-=======
-void add(stack_t **stack, unsigned int line_num)
-void swap(stack_t **stack, unsigned int line_num)
-void sub(stack_t **stack, unsigned int line_num)
-void _div(stack_t **stack, unsigned int line_num)
-void mul(stack_t **stack, unsigned int line_num)
-void pushOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
-void pallOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
-void popOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
-void swapOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
-char *opGlobal[] = { NULL, NULL, "stack", NULL }
-int main(int argc, char **argv)
-void opcode_check(int line_number, stack_t **stack)
->>>>>>> dba415de0dc8e434168a081507710b4e6191a478
+void add(stack_t **stack, unsigned int line_num);
+void swap(stack_t **stack, unsigned int line_num);
+void sub(stack_t **stack, unsigned int line_num);
+void _div(stack_t **stack, unsigned int line_num);
+void mul(stack_t **stack, unsigned int line_num);
+char *opGlobal[] = { NULL, NULL, "stack", NULL };
+int main(int argc, char **argv);
+void opcode_check(int line_number, stack_t **stack);
 
 /* END */
 
