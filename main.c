@@ -1,11 +1,11 @@
 #include "monty.h"
 
-char *opGlobal[] = { NULL, NULL, "stack", NULL };
+char *opGlobal[] = { NULL, NULL, "stack", NULL }
 
 /**
 * main - runs the monty
 * @argc: argument count
-* @argv; the individual arguments
+* @argv: the individual arguments
 *
 * Return: 0
 */
@@ -35,10 +35,6 @@ int main(int argc, char **argv)
 *
 * @stack: stack of doubly linked list
 * @line: line number of opcode
-* @pushOP: decleration
-* @pallOP: decleration
-* @popOP: decleration
-* @swapOP: decleration
 *
 */
 
@@ -51,7 +47,7 @@ void opcode_check(int line_number, stack_t **stack)
 		{"pint", pintOp},
 		{"pop", popOp},
 		{"swap", swapOp},
-		{"add", addOp},
+		{"add", addOp },
 		{"sub", subOp},
 		{"div", divOp},
 		{"mod", modOp},
@@ -63,7 +59,7 @@ void opcode_check(int line_number, stack_t **stack)
 		{"stack", stackQOp},
 		{"queue", stackQOp},
 		{"nop", NULL},
-		{NULL, NULL}
+		{NULL, NULL},
 	};
 
 		for (i = 0; opFunction[i].opcode != NULL; i++)
