@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <unistd.h>
+
 
 /* END */
 
@@ -42,7 +44,7 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+	void (*f)(stack_t **stack, unsigned int line_num);
 } instruction_t;
 
 
@@ -63,6 +65,11 @@ arg Arg;
 
 /* Prototypes */
 
+void add(stack_t **stack, unsigned int line_num)
+void swap(stack_t **stack, unsigned int line_num)
+void sub(stack_t **stack, unsigned int line_num)
+void _div(stack_t **stack, unsigned int line_num)
+void mul(stack_t **stack, unsigned int line_num)
 void pushOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
 void pallOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
 void popOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)

@@ -1,6 +1,6 @@
 #include "monty.h"
 
-char *opGlobal[] = { NULL, NULL, "stack", NULL };
+char *opGlobal[] = { NULL, NULL, "stack", NULL }
 
 /**
 * main - runs the monty
@@ -51,7 +51,7 @@ void opcode_check(int line_number, stack_t **stack)
 		{"pint", pintOp},
 		{"pop", popOp},
 		{"swap", swapOp},
-		{"add", addOp},
+		{"add", addOp },
 		{"sub", subOp},
 		{"div", divOp},
 		{"mod", modOp},

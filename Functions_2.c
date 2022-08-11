@@ -6,7 +6,7 @@
  * @line_number: instruction line number
  * Return: nothing
  */
-void add(stack_t **stack, unsigned int line_number)
+void add(stack_t **stack, unsigned int line_num)
 {
 	stack_t *temp = NULL;
 
@@ -14,7 +14,7 @@ void add(stack_t **stack, unsigned int line_number)
 		temp = (*stack)->next;
 	if (!temp)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't add, stack too short\n", line_number);
+		dprintf(STDERR_FILENO, "L%d: can't add, stack too short\n", line_num);
 		argument[0] = "FAIL";
 		return;
 	}

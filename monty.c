@@ -131,7 +131,7 @@ void popOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
 		}
 	}
 	free(tmp);
-}
+
 /**
  * swapOP - performs swap op
  *
@@ -163,4 +163,4 @@ void swapOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
 	n = tmp->n;
 	tmp->n = cog->n;
 	cog->n = n;
-}
+
