@@ -4,12 +4,12 @@
  * push - pushes an element to the stack
  * @strack: the stack
  * @line_number: instruction line number
- * Return (void)
+ * Return: nothing
  */
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new, *temp = *stack;
+	stack_t *new, *temp = **stack;
 	int number, bol = 0, i = 0;
 
 	for (; argument[0][i]; i++)
@@ -33,14 +33,34 @@ void push(stack_t **stack, unsigned int line_number)
 		if (temp)
 			temp->next = new;
 		else 
-			*stack = new;
+			**stack = new;
 	}
 	else
 	{
-		new->next = *stack;
+		new->next = **stack;
 		new->prev = NULL;
-		if (*stack)
-			(*stack)->prev = new;
-		*stack = new;
+		if (**stack)
+			(**stack)->prev = new;
+		**stack = new;
 	}
+}
+
+/**
+ * pall - prints all the values on the stack
+ * @stack: the stack
+ * @line_number: instuction line number
+ * Return: nothing
+ */
+
+void pall(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = **stack;
+
+	UNUSED(line_number);
+	while (temp)
+	{
+		printf("%d\n", temp->n);
+		temp = temp->next;
+	}
+	temp = NULL;
 }
