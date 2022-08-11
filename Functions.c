@@ -9,11 +9,11 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new, *temp = **stack;
+	stack_t *new, *temp = *stack;
 	int number, bol = 0, i = 0;
 
-	for (; argument[0][i]; i++)
-		bol = _isaplha((int)argument[0][i]);
+	for (; [0][i]; i++)
+		bol = _isalpha((int)argument[0][i]);
 
 	if (bol != 0)
 	{
@@ -33,15 +33,15 @@ void push(stack_t **stack, unsigned int line_number)
 		if (temp)
 			temp->next = new;
 		else
-			**stack = new;
+			*stack = new;
 	}
 	else
 	{
-		new->next = **stack;
+		new->next = *stack;
 		new->prev = NULL;
-		if (**stack)
-			(**stack)->prev = new;
-		**stack = new;
+		if (*stack)
+			(*stack)->prev = new;
+		*stack = new;
 	}
 }
 
@@ -54,7 +54,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 void pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp = **stack;
+	stack_t *temp = *stack;
 
 	UNUSED(line_number);
 	while (temp)
@@ -82,9 +82,9 @@ void pop(stack_t **stack, unsigned int line_number)
 		argument[0] = "FAIL";
 		return;
 	}
-	save = (**stack)->next;
-	free(**stack);
-	**stack = save;
+	save = (*stack)->next;
+	free(*stack);
+	*stack = save;
 }
 /**
  * nop - does nothing

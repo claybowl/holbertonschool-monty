@@ -7,7 +7,10 @@
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <ctype.h>
+#include <fcntl.h>
 
+char *argument[2];
 
 /* END */
 
@@ -64,21 +67,21 @@ arg Arg;
 
 
 /* Prototypes */
-
-void pushOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd);
-void pallOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd);
-void popOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd);
-void swapOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd);
+int _isalpha(int c);
+void pushOP(stack_t *stack, unsigned int line_num, char *opcode, FILE *fd);
+void pallOP(stack_t *stack, unsigned int line_num, char *opcode, FILE *fd);
+void popOP(stack_t *stack, unsigned int line_num, char *opcode, FILE *fd);
+void swapOP(stack_t *stack, unsigned int line_num, char *opcode, FILE *fd);
 char *opGlobal[] = { NULL, NULL, "stack", NULL };
 void opcode_check(int line_number, stack_t **stack);
-void add(stack_t **stack, unsigned int line_num);
-void swap(stack_t **stack, unsigned int line_num);
-void sub(stack_t **stack, unsigned int line_num);
-void _div(stack_t **stack, unsigned int line_num);
-void mul(stack_t **stack, unsigned int line_num);
-char *opGlobal[] = { NULL, NULL, "stack", NULL };
+void add(stack_t *stack, unsigned int line_num);
+void swap(stack_t *stack, unsigned int line_num);
+void sub(stack_t *stack, unsigned int line_num);
+void _div(stack_t *stack, unsigned int line_num);
+void mul(stack_t *stack, unsigned int line_num);
 int main(int argc, char **argv);
 void opcode_check(int line_number, stack_t **stack);
+
 
 /* END */
 
