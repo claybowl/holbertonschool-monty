@@ -32,7 +32,7 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		if (temp)
 			temp->next = new;
-		else 
+		else
 			**stack = new;
 	}
 	else
@@ -82,7 +82,7 @@ void pop(stack_t **stack, unsigned int line_number)
 		argument[0] = "FAIL";
 		return;
 	}
-	save =(**stack)->next;
+	save = (**stack)->next;
 	free(**stack);
 	**stack = save;
 }

@@ -5,7 +5,7 @@ char *opGlobal[] = { NULL, NULL, "stack", NULL };
 /**
 * main - runs the monty
 * @argc: argument count
-* @argv; the individual arguments
+* @argv: the individual arguments
 *
 * Return: 0
 */
@@ -63,7 +63,7 @@ void opcode_check(int line_number, stack_t **stack)
 		{"stack", stackQOp},
 		{"queue", stackQOp},
 		{"nop", NULL},
-		{NULL, NULL}
+		{NULL, NULL},
 	};
 	for (i = 0; opFunction[i].opcode != NULL; i++)
 		{
