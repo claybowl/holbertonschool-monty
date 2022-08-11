@@ -65,19 +65,19 @@ void opcode_check(int line_number, stack_t **stack)
 		{"nop", NULL},
 		{NULL, NULL}
 	};
-	for (i = 0; opFunction[i].opcode != NULL; i++)
-		{
-		/*input matches an opcode*/
-			if (strcmp(oPfunction[i].opcode, opCommand[0] == 0)
-				{
-					if (opFunction[i].f)
-						opFunction[i].f(stack, line_number);
-					if (opCommand[3])/*opcode baaad*/
-						return;
-					opCheck = 1;/*opcode success!*/
-					break;
-				}
+
+		for (i = 0; opFunction[i].opcode != NULL; i++)
+		{/*input matches an opcode*/
+			if (strcmp(opFunction[i].opcode, opCommand[0]) == 0)
+			{
+				if (opFunction[i].f)
+					opFunction[i].f(stack, line_number);
+				if (opCommand[3])/*an error occurred*/
+					return;
+				opCheck = 1;/*an opcode successfully ran*/
+				break; }
 		}
+	}
 	if (opCheck != 1)/*input not matching any opcode*/
 	{
 		dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n",
