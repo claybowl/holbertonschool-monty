@@ -32,9 +32,14 @@ int main(int argc, char **argv)
 
 /**
 * opcode_check - executes the found opcode
-* 
+*
 * @stack: stack of doubly linked list
 * @line: line number of opcode
+* @pushOP: decleration
+* @pallOP: decleration
+* @popOP: decleration
+* @swapOP: decleration
+*
 */
 
 void opcode_check(int line_number, stack_t **stack)
@@ -60,20 +65,19 @@ void opcode_check(int line_number, stack_t **stack)
 		{"nop", NULL},
 		{NULL, NULL}
 	};
-
 	for (i = 0; opFunction[i].opcode != NULL; i++)
-	{
-	/*input matches an opcode*/
-		if (strcmp(oPfunction[i].opcode, opCommand[0] == 0)
-			{
-			if (opFunction[i].f)
-				opFunction[i].f(stack, line_number);
-			if (opCommand[3])/*opcode baaad*/
-				return;
-			opCheck = 1;/*opcode success!*/
-			break;
-			}
-	}
+		{
+		/*input matches an opcode*/
+			if (strcmp(oPfunction[i].opcode, opCommand[0] == 0)
+				{
+					if (opFunction[i].f)
+						opFunction[i].f(stack, line_number);
+					if (opCommand[3])/*opcode baaad*/
+						return;
+					opCheck = 1;/*opcode success!*/
+					break;
+				}
+		}
 	if (opCheck != 1)/*input not matching any opcode*/
 	{
 		dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n",

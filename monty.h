@@ -53,9 +53,10 @@ typedef struct instruction_s
 
 typedef struct arg
 {
-    char *argument;
-}arg;
+	char *argument;
+} arg;
 arg Arg;
+
 /* END */
 
 

@@ -11,18 +11,16 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	char *arg = Arg.argument;  /* fetch the argument to the opcode that we stored in our global variable --- defined un the header file*/
+	char *arg = Arg.argument;
 	int data, i;
 	stack_t *element;
 
-	/* check if this opcode had an argument --- push requires an argument because it involves inserting an element onto the stack */
 	if (arg == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	
-	/* check if the argument can be converted to a number --- for this program, we will be working with integers only */
+
 	for (i = 0; arg[i] != '\0'; i++)
 	{
 		if ((isdigit(arg[i])) == 0 && arg[i] != '-')
@@ -33,15 +31,13 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 
 	data = atoi(arg);  /* change opcode argument to integer */
-	
-	/* create a node for the new element that will be added to the stack --- */
+
 	element = malloc(sizeof(stack_t));
 	if (element == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	
 	/* fill the new node with our argument and push it onto the stack */
 	element->n = data;
 	element->prev = NULL;

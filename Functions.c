@@ -2,7 +2,7 @@
 
 /**
  * push - pushes an element to the stack
- * @strack: the stack
+ * @stack: the stack
  * @line_number: instruction line number
  * Return: nothing
  */

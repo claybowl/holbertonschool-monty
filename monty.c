@@ -2,28 +2,28 @@
 
 /**
  * pushOP - performs a push operation
- * 
+ *
  * @stack: the stack list
  * @line_num: the line number
  * @opcode: keeps opcode the same
  * @fd: the file descriptor
  */
 
-void pushOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd) 
+void pushOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
 {
 	int i, j;
 
 	if (!opGlobal[1])/*checks for second argument*/
 	{
 		errorEXIT(stack, line_num, opcode, fd);
-	}/*itterate string to check for chars*/
+	} /*itterate string to check for chars*/
 	for (j = 0; opGlobal[1][j] != 0; j++)
 	{
 		if (isalpha(opGlobal[1][j]) != 0)
 		{
 			errorEXIT(stack, line_num, opcode, fd);
 		}
-	}/*handles 0 edgecase*/
+	} /*handles 0 edgecase*/
 	if (strcmp(opGlobal[1], "0") == 0 || strcmp(opGlobal[1], "-0") == 0)
 	{
 		i = 0;
