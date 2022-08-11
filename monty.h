@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <ctype.h>
 #include <fcntl.h>
+#include <stdarg.h>
 
 char *argument[2];
 
