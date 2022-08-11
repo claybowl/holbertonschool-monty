@@ -1,167 +1,51 @@
 #include "monty.h"
 
 /**
- * pushOP - performs push op
- *
- * @stack: the list
- * @line_num: line number.
- * @opcode: to keep opcode the same.
- * @fd: the file
- *
+ * main - main function for monty
+ * @argc: arguments count
+ * @argv: arguments inventory
+ * Return: nothing
  */
-
-void pushOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
+int main(int ac, char *av[])
 {
-	int i, j;
+	int i = 0;
+	unsigned int line = 1;
+	ssize_t read_val = 0;
+	size_t bytes = 1;
+	char *buffer = NULL, *token = NULL;
+	FILE *fd;
+	stack_t *stack = NULL;
 
-	if (!opGlobal[1])/*checks for second argument*/
+	argument[0] = "SCSS", argument[1] = "SCSS";
+	if (ac != 2)
 	{
-		errorEXIT(stack, line_num, opcode, fd);
-	} /*itterate string to check for chars*/
-	for (j = 0; opGlobal[1][j] != 0; j++)
-	{
-		if (isalpha(opGlobal[1][j]) != 0)
-		{
-			errorEXIT(stack, line_num, opcode, fd);
-		}
-	} /*handles 0 edgecase*/
-	if (strcmp(opGlobal[1], "0") == 0 || strcmp(opGlobal[1], "-0") == 0)
-	{
-		i = 0;
-	}
-	else
-	{ /* atoi number */
-		i = atoi(opGlobal[1]);
-		/* checks if atoi failed */
-		if (i == 0)
-		{
-			errorEXIT(stack, line_num, opcode, fd);
-		}
-	}
-	add_node(stack, i, opcode, fd);
-}
-
-/**
- * pallOP - performs pall
- *
- * @stack: the list
- * @line_num: line number.
- * @opcode: to keep opcode the same.
- * @fd: the file
- *
- */
-
-void pallOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
-{
-	(void)opcode;
-	(void)fd;
-	(void)line_num;
-	if (*stack)
-	{
-		pallHELPER(*stack);
-	}
-}
-
-/**
- * pintOP - performs pint
- *
- * @stack: the list
- * @line_num: line number.
- * @opcode: to keep opcode the same.
- * @fd: the file
- *
- */
-void pintOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
-{
-	stack_t *tmp;
-
-	if (*stack == NULL)
-	{
-		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n",
-			line_num);
-		freeList(*stack);
-		free(opcode);
-		fclose(fd);
+		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	tmp = *stack;
-	while (tmp->prev != NULL)
-		tmp = tmp->prev;
-	printf("%i\n", tmp->n);
+	fd = fopen(av[1], "r");
+	if (!fd)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", av[1]);
+		free(buffer), free(token);
+		exit(EXIT_FAILURE); }
+	while (read_val != EOF && (strcmp(argument[0], "FAIL") != 0))
+	{
+		buffer = NULL;
+		read_val = getline(&buffer, &bytes, fd);
+		if (read_val == -1)
+		{
+			free(buffer);
+			break; }
+		token = buffer;
+		interpreter(token, line, &stack);
+		i++; line++;
+		free(buffer); }
+	if (strcmp(argument[0], "FAIL") == 0)
+	{
+		fclose(fd);
+		free_stack(stack);
+		exit(EXIT_FAILURE); }
+	free_stack(stack);
+	fclose(fd);
+	return (0);
 }
-/**
- * popOP - performs pop op
- *
- * @stack: the list
- * @line_num: line number.
- * @opcode: to keep opcode the same.
- * @fd: the file
- *
- */
-void popOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
-{
-	stack_t *tmp;
-
-	if ((*stack) == NULL)
-	{
-		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n",
-			line_num);
-		freeList(*stack);
-		free(opcode);
-		fclose(fd);
-		exit(EXIT_FAILURE);
-	}
-	tmp = *stack;
-	while (tmp->prev != NULL)
-	{
-		tmp = tmp->prev;
-	}
-	if (tmp->next != NULL)
-	{
-		tmp->next->prev = NULL;
-	}
-	if (tmp == *stack)
-	{
-		if ((*stack)->next != NULL)
-		{
-			*stack = (*stack)->next;
-		}
-		else
-		{
-			*stack = NULL;
-		}
-	}
-	free(tmp);
-
-/**
- * swapOP - performs swap op
- *
- * @stack: the list
- * @line_num: line number.
- * @opcode: to keep opcode the same.
- * @fd: the file
- *
- */
-void swapOP(stack_t **stack, unsigned int line_num, char *opcode, FILE *fd)
-{
-	stack_t *tmp, *cog;
-	int n;
-
-	if (*stack == NULL ||
-	    (((*stack)->prev == NULL) && (*stack)->next == NULL))
-	{
-		dprintf(STDERR_FILENO, "L%d: can't swap, stack too short\n",
-			line_num);
-		freeList(*stack);
-		free(opcode);
-		fclose(fd);
-		exit(EXIT_FAILURE);
-	}
-	for (tmp = *stack; tmp->prev; tmp = tmp->prev)
-	{
-	}
-	cog = tmp->next;
-	n = tmp->n;
-	tmp->n = cog->n;
-	cog->n = n;
-

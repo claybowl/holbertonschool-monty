@@ -12,7 +12,7 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *new, *temp = *stack;
 	int number, bol = 0, i = 0;
 
-	for (; [0][i]; i++)
+	for (; argument[0][i]; i++)
 		bol = _isalpha((int)argument[0][i]);
 
 	if (bol != 0)
@@ -63,6 +63,22 @@ void pall(stack_t **stack, unsigned int line_number)
 		temp = temp->next;
 	}
 	temp = NULL;
+}
+/**
+ * pint - prints the value at the top of the stack
+ * @stack: the stack
+ * @line: instruction line number
+ * Return: nothing
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+	if (!*stack)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
+		argument[0] = "FAIL";
+		return;
+	}
+	printf("%d\n", (*stack)->n);
 }
 
 /**

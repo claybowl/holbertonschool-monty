@@ -3,15 +3,37 @@
 
 /* Common libraries */
 
-#include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
-#include <ctype.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <fcntl.h>
-#include <stdarg.h>
+#include <string.h>
+#include <ctype.h>
+#define UNUSED(x) (void)(x)
 
 char *argument[2];
+
+#define INSTRUCTIONS { \
+	{"push",push},\
+	{"pall", pall},\
+	{"pint", pint},\
+	{"pop", pop},\
+	{"swap", swap},\
+	{"nop", nop},\
+	{"add", add},\
+	{"sub", sub},\
+	{"div", _div},\
+	{"mul", mul},\
+	{"mod", mod},\
+	{"pchar", pchar},\
+	{"pstr", pstr},\
+	{"rotl", rotl},\
+	{"rotr", rotr},\
+	{"stack", _stack},\
+	{"queue", queue},\
+}
 
 /* END */
 
@@ -48,40 +70,39 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_num);
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-
-
-/**
-* struct arg - global variable to hold the value of the argument to the opcode
-* @argument: char variable.
-*/
-
-typedef struct arg
-{
-	char *argument;
-} arg;
-arg Arg;
 
 /* END */
 
 
 
 /* Prototypes */
+
+char **tokenizer(const char *filename);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void interpreter(char *instruction, unsigned int line, stack_t **stack);
+void nop(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void _div(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
+void _stack(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t *stack);
 int _isalpha(int c);
-void pushOP(stack_t *stack, unsigned int line_num, char *opcode, FILE *fd);
-void pallOP(stack_t *stack, unsigned int line_num, char *opcode, FILE *fd);
-void popOP(stack_t *stack, unsigned int line_num, char *opcode, FILE *fd);
-void swapOP(stack_t *stack, unsigned int line_num, char *opcode, FILE *fd);
-char *opGlobal[] = { NULL, NULL, "stack", NULL };
-void opcode_check(int line_number, stack_t **stack);
-void add(stack_t *stack, unsigned int line_num);
-void swap(stack_t *stack, unsigned int line_num);
-void sub(stack_t *stack, unsigned int line_num);
-void _div(stack_t *stack, unsigned int line_num);
-void mul(stack_t *stack, unsigned int line_num);
-int main(int argc, char **argv);
-void opcode_check(int line_number, stack_t **stack);
+
+
+
 
 
 /* END */
