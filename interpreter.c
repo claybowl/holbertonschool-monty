@@ -34,7 +34,7 @@ void interpreter(char *instruction, unsigned int line, stack_t **stack)
 				i++;
 			}
 			if (bol)
-			{	
+			{
 				func(stack, line);
 				if (strcmp(argument[0], "FAIL") == 0)
 					return;
@@ -47,4 +47,3 @@ void interpreter(char *instruction, unsigned int line, stack_t **stack)
 		}
 	}
 }
-	
