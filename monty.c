@@ -20,8 +20,7 @@ int main(int ac, char *av[])
 	if (ac != 2)
 	{
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+		exit(EXIT_FAILURE); }
 	fd = fopen(av[1], "r");
 	if (!fd)
 	{
@@ -38,7 +37,8 @@ int main(int ac, char *av[])
 			break; }
 		token = buffer;
 		interpreter(token, line, &stack);
-		i++; line++;
+		i++;
+		line++;
 		free(buffer); }
 	if (strcmp(argument[0], "FAIL") == 0)
 	{

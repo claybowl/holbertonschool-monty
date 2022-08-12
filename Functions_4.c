@@ -72,7 +72,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 /**
  * rotl - rotates the stack to the top
  * @stack: the stack
- * @line: instruction line number
+ * @line_number: instruction line number
  * Return: nothing
  */
 void rotl(stack_t **stack, unsigned int line_number)
