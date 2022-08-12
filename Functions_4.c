@@ -52,7 +52,7 @@ void pchar(stack_t **stack, unsigned int line)
 /**
  * pstr - prints the string starting at the top of the stack
  * @stack: the stack
- * @line: instruction line number
+ * @line_number: instruction line number
  * Return: nothing
  */
 void pstr(stack_t **stack, unsigned int line_number)
@@ -97,7 +97,7 @@ void rotl(stack_t **stack, unsigned int line_number)
 /**
  * rotr - rotates the stack to the bottom
  * @stack: the stack
- * @line: instruction line number
+ * @line_number: instruction line number
  * Return: nothing
  */
 void rotr(stack_t **stack, unsigned int line_number)

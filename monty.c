@@ -2,8 +2,8 @@
 
 /**
  * main - main function for monty
- * @argc: arguments count
- * @argv: arguments inventory
+ * @ac: arguments count
+ * @av: arguments inventory
  * Return: nothing
  */
 int main(int ac, char *av[])
